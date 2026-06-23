@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WOSEI Trust – Women Social Entrepreneurial Initiative</title>
+  <meta name="description" content="WOSEI Trust empowers women in local communities through social entrepreneurship, digital skills training, and sustainable development initiatives." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ===== DONATE MODAL ===== -->
+  <div id="donate-modal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="modal-box">
+      <button class="modal-close" id="modal-close-btn" aria-label="Close donate modal">&times;</button>
+      <div class="modal-header">
+        <span class="modal-icon">❤️</span>
+        <h2 id="modal-title">Make a Donation</h2>
+        <p>Your generosity transforms lives. Choose how you'd like to give.</p>
+      </div>
+      <div class="donate-tabs">
+        <button class="tab-btn active" data-tab="one-time" id="tab-one-time">One-Time</button>
+        <button class="tab-btn" data-tab="monthly" id="tab-monthly">Monthly</button>
+      </div>
+      <div class="amount-grid">
+        <button class="amount-btn" id="btn-amt-50" data-amount="50">P50</button>
+        <button class="amount-btn" id="btn-amt-100" data-amount="100">P100</button>
+        <button class="amount-btn selected" id="btn-amt-250" data-amount="250">P250</button>
+        <button class="amount-btn" id="btn-amt-500" data-amount="500">P500</button>
+        <button class="amount-btn" id="btn-amt-1000" data-amount="1000">P1,000</button>
+        <button class="amount-btn custom-btn" id="btn-amt-custom" data-amount="custom">Other</button>
+      </div>
+      <div id="custom-amount-wrap" class="custom-amount-wrap hidden">
+        <label for="custom-amount-input">Enter amount (BWP)</label>
+        <input type="number" id="custom-amount-input" placeholder="e.g. 750" min="10" />
+      </div>
+      <div class="donor-info">
+        <input type="text" id="donor-name" placeholder="Full Name" />
+        <input type="email" id="donor-email" placeholder="Email Address" />
+      </div>
+      <button class="donate-submit-btn" id="donate-submit">
+        Donate <span id="donate-amount-label">P250</span> Now
+      </button>
+      <p class="modal-note">🔒 Secure &amp; encrypted. WOSEI Trust is a registered non-profit organisation.</p>
+    </div>
+  </div>
+
+  <!-- ===== NAVBAR ===== -->
+  <header class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="#home" class="nav-logo">
+        <img src="images/logo.jpg" alt="WOSEI Trust Logo" id="nav-logo-img" />
+      </a>
+      <nav class="nav-links" id="nav-links">
+        <a href="#home" class="nav-link">Home</a>
+        <a href="#about" class="nav-link">About</a>
+        <a href="#programs" class="nav-link">Programs</a>
+        <a href="#impact" class="nav-link">Impact</a>
+        <a href="#gallery" class="nav-link">Gallery</a>
+        <a href="#membership" class="nav-link">Membership</a>
+        <a href="#contact" class="nav-link">Contact</a>
+      </nav>
+      <div class="nav-actions">
+        <button class="btn-donate-nav" id="open-donate-nav">❤ Donate</button>
+        <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+    <!-- Mobile menu -->
+    <div class="mobile-menu" id="mobile-menu">
+      <a href="#home" class="mob-link">Home</a>
+      <a href="#about" class="mob-link">About</a>
+      <a href="#programs" class="mob-link">Programs</a>
+      <a href="#impact" class="mob-link">Impact</a>
+      <a href="#gallery" class="mob-link">Gallery</a>
+      <a href="#membership" class="mob-link">Membership</a>
+      <a href="#contact" class="mob-link">Contact</a>
+      <button class="btn-donate-mob" id="open-donate-mob">❤ Donate Now</button>
+    </div>
+  </header>
+
+  <main id="main-content">
+  <!-- ===== HERO ===== -->
+  <section class="hero" id="home">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <span class="hero-badge">Women Social Entrepreneurial Initiative</span>
+      <h1 class="hero-title">Empowering Women,<br /><em>Transforming Communities</em></h1>
+      <p class="hero-sub">WOSEI Trust invests in women's potential through skills training, digital literacy, and community-led entrepreneurship — creating lasting change from the ground up.</p>
+      <div class="hero-btns">
+        <button class="btn-primary" id="open-donate-hero">❤ Donate Today</button>
+        <a href="#about" class="btn-outline">Learn More</a>
+      </div>
+    </div>
+    <div class="hero-scroll-indicator">
+      <span></span>
+    </div>
+  </section>
+
+  <!-- ===== STATS TICKER ===== -->
+  <section class="stats-bar">
+    <div class="stats-container">
+      <div class="stat-item">
+        <span class="stat-num" data-target="500">0</span><span class="stat-unit">+</span>
+        <p>Women Trained</p>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-item">
+        <span class="stat-num" data-target="12">0</span><span class="stat-unit"></span>
+        <p>Communities Reached</p>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-item">
+        <span class="stat-num" data-target="8">0</span><span class="stat-unit"></span>
+        <p>Active Programs</p>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-item">
+        <span class="stat-num" data-target="9">0</span><span class="stat-unit"></span>
+        <p>Years of Impact</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== ABOUT ===== -->
+  <section class="about section" id="about">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-text reveal">
+          <span class="section-label">Who We Are</span>
+          <h2 class="section-title">A Trust Built on <em>Women's Strength</em></h2>
+          <p>WOSEI Trust — the Women Social Entrepreneurial Initiative — is a locally-rooted non-profit organisation dedicated to unlocking the transformative power of women in our communities. We believe that when a woman is empowered, her entire family and community thrives.</p>
+          <p>Through hands-on training, mentorship, and access to resources, we equip women with the skills they need to lead, earn, and inspire — whether in digital technology, traditional crafts, or community leadership.</p>
+          <div class="about-values">
+            <div class="value-pill">🌱 Community-Led</div>
+            <div class="value-pill">💡 Innovation</div>
+            <div class="value-pill">🤝 Sisterhood</div>
+            <div class="value-pill">📈 Sustainability</div>
+          </div>
+          <a href="#programs" class="btn-primary">Our Programs</a>
+        </div>
+        <div class="about-visual reveal">
+          <div class="about-img-card">
+            <img src="images/fb2.jpg" alt="Women receiving digital skills training at WOSEI Trust" />
+            <div class="about-img-badge">
+              <span>Est. 2017</span>
+              <p>Serving Local Communities</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== MISSION / VISION ===== -->
+  <section class="mission-section section">
+    <div class="container">
+      <div class="mv-grid">
+        <div class="mv-card reveal">
+          <div class="mv-icon">🎯</div>
+          <h3>Our Mission</h3>
+          <p>To empower women through social entrepreneurship, digital literacy, and sustainable livelihood programs that build self-reliance and community resilience.</p>
+        </div>
+        <div class="mv-card reveal">
+          <div class="mv-icon">🔭</div>
+          <h3>Our Vision</h3>
+          <p>A society where every woman has equal access to opportunity, resources, and the freedom to shape her own future and that of her community.</p>
+        </div>
+        <div class="mv-card reveal">
+          <div class="mv-icon">💎</div>
+          <h3>Our Values</h3>
+          <p>Integrity, compassion, inclusivity, and innovation guide everything we do — ensuring that no woman is left behind on the path to progress.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PROGRAMS ===== -->
+  <section class="programs section" id="programs">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-label">What We Do</span>
+        <h2 class="section-title">Our <em>Programs</em></h2>
+        <p class="section-sub">Practical, community-centred initiatives designed to uplift women and create lasting impact.</p>
+      </div>
+      <div class="programs-grid">
+        <div class="program-card reveal">
+          <div class="program-icon">💻</div>
+          <h3>Digital Skills Training</h3>
+          <p>We provide hands-on computer literacy and digital skills workshops, equipping women with the tools to thrive in the modern economy — from basic computing to online entrepreneurship.</p>
+          <a href="#gallery" class="prog-link">See in Action →</a>
+        </div>
+        <div class="program-card reveal">
+          <div class="program-icon">🏺</div>
+          <h3>Cultural Arts &amp; Crafts</h3>
+          <p>Preserving heritage while building livelihoods. We support women artisans in traditional crafts, pottery, and cultural arts — turning talent into sustainable income streams.</p>
+          <a href="#gallery" class="prog-link">See in Action →</a>
+        </div>
+        <div class="program-card reveal">
+          <div class="program-icon">🚀</div>
+          <h3>Entrepreneurship Development</h3>
+          <p>From business planning to financial literacy, our entrepreneurship program equips women with skills to start, manage, and grow their own small enterprises.</p>
+          <a href="#contact" class="prog-link">Get Involved →</a>
+        </div>
+        <div class="program-card reveal">
+          <div class="program-icon">🌿</div>
+          <h3>Community Outreach</h3>
+          <p>We connect with rural and peri-urban communities, bringing training and resources directly to women where they are — removing barriers to participation.</p>
+          <a href="#contact" class="prog-link">Partner With Us →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== GALLERY ===== -->
+  <section class="gallery-section section" id="gallery">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-label">Our Work in Action</span>
+        <h2 class="section-title">Community <em>Outreach</em> Gallery</h2>
+        <p class="section-sub">Real moments from our programs — women learning, creating, and leading.</p>
+      </div>
+      <div class="gallery-grid">
+        <div class="gallery-item large reveal" tabindex="0" aria-label="Women at a WOSEI Trust community outreach session">
+          <img src="images/fb5.jpg" alt="WOSEI Trust community outreach session with women participants" />
+          <div class="gallery-caption">
+            <span class="gallery-tag">Community Outreach</span>
+            <h4>Women Coming Together</h4>
+            <p>Community members gather for a WOSEI Trust outreach session, strengthening bonds and shared goals.</p>
+          </div>
+        </div>
+        <div class="gallery-item reveal" tabindex="0" aria-label="Digital skills training session">
+          <img src="images/fb2.jpg" alt="Women learning computer skills in a WOSEI Trust training session" />
+          <div class="gallery-caption">
+            <span class="gallery-tag">Digital Training</span>
+            <h4>Building Digital Skills</h4>
+            <p>Women gain hands-on computer literacy in a collaborative training environment.</p>
+          </div>
+        </div>
+        <div class="gallery-item reveal" tabindex="0" aria-label="One-on-one digital coaching session">
+          <img src="images/fb3.jpg" alt="One-on-one coaching during a WOSEI digital training workshop" />
+          <div class="gallery-caption">
+            <span class="gallery-tag">Mentorship</span>
+            <h4>Personalised Coaching</h4>
+            <p>Trainers work one-on-one to ensure every participant gains confidence and competence.</p>
+          </div>
+        </div>
+        <div class="gallery-item reveal" tabindex="0" aria-label="Woman independently using computer">
+          <img src="images/fb4.jpg" alt="A WOSEI Trust participant independently practicing digital skills" />
+          <div class="gallery-caption">
+            <span class="gallery-tag">Independence</span>
+            <h4>Self-Driven Learning</h4>
+            <p>Participants independently apply their new digital skills — a milestone of empowerment.</p>
+          </div>
+        </div>
+        <div class="gallery-item reveal" tabindex="0" aria-label="Traditional pottery and cultural arts">
+          <img src="images/fb6.jpg" alt="Traditional African clay pottery created by WOSEI Trust artisans" />
+          <div class="gallery-caption">
+            <span class="gallery-tag">Cultural Arts</span>
+            <h4>African Heritage Crafts</h4>
+            <p>Beautifully crafted traditional pottery — preserving heritage while creating sustainable livelihoods.</p>
+          </div>
+        </div>
+        <div class="gallery-item reveal" tabindex="0" aria-label="Women at community outreach">
+          <img src="images/fb1.jpg" alt="WOSEI Trust participants at a community arts programme" />
+          <div class="gallery-caption">
+            <span class="gallery-tag">Arts Programme</span>
+            <h4>Empowered Artisans</h4>
+            <p>Women artisans share skills and creativity in a vibrant community arts setting.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== IMPACT QUOTE ===== -->
+  <section class="impact-section section" id="impact">
+    <div class="impact-overlay"></div>
+    <div class="container impact-inner">
+      <div class="impact-quote reveal">
+        <blockquote>
+          "When women are educated and empowered, they become the agents of change that lift entire communities. WOSEI Trust exists to make that transformation real."
+        </blockquote>
+        <cite>— WOSEI Trust Leadership</cite>
+      </div>
+      <div class="impact-cta reveal">
+        <h3>Be Part of the Change</h3>
+        <p>Your donation directly funds training materials, facilitators, and outreach programs that reach women who need it most.</p>
+        <button class="btn-primary" id="open-donate-impact">❤ Donate Now</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== GET INVOLVED ===== -->
+  <section class="involved-section section">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-label">Get Involved</span>
+        <h2 class="section-title">Ways to <em>Support</em> Us</h2>
+      </div>
+      <div class="involved-grid">
+        <div class="involved-card reveal">
+          <div class="inv-icon">❤️</div>
+          <h3>Donate</h3>
+          <p>A financial contribution — large or small — directly funds our programs and reaches more women in need.</p>
+          <button class="btn-primary small" id="open-donate-inv">Give Now</button>
+        </div>
+        <div class="involved-card reveal">
+          <div class="inv-icon">🙋‍♀️</div>
+          <h3>Volunteer</h3>
+          <p>Share your skills as a trainer, mentor, or organiser. Your time is a powerful gift to the women we serve.</p>
+          <a href="#contact" class="btn-outline small">Sign Up</a>
+        </div>
+        <div class="involved-card reveal">
+          <div class="inv-icon">🤝</div>
+          <h3>Partner With Us</h3>
+          <p>Organisations, businesses, and institutions can amplify impact through strategic partnerships and sponsorships.</p>
+          <a href="#contact" class="btn-outline small">Contact Us</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== MEMBERSHIP & POLICIES ===== -->
+  <section class="policies-section section" id="membership">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-label">Trust Policy &amp; Rules</span>
+        <h2 class="section-title">Membership &amp; <em>Conduct</em></h2>
+        <p class="section-sub">Read our code of conduct, core operational policies, and guide for membership contributions.</p>
+      </div>
+
+      <div class="policies-tabs-container reveal">
+        <!-- Tab buttons -->
+        <div class="policies-tabs">
+          <button class="pol-tab-btn active" data-policy-tab="membership-pay" id="tab-pol-membership">Membership &amp; Payments</button>
+          <button class="pol-tab-btn" data-policy-tab="conduct" id="tab-pol-conduct">Code of Conduct</button>
+          <button class="pol-tab-btn" data-policy-tab="operations" id="tab-pol-operations">Operational Policy</button>
+        </div>
+
+        <!-- Tab contents -->
+        <div class="policies-tab-content active" id="policy-membership-pay">
+          <div class="membership-payment-grid">
+            <div class="payment-info-card">
+              <h3>Become a Member</h3>
+              <p>Beneficiaries participating in WOSEI Trust programmes become official members. Membership fees help fund training materials, community events, and operational support to keep our programs running.</p>
+              <div class="fee-badge">
+                <span class="fee-price">P300.00</span>
+                <span class="fee-period">Annual Membership Fee</span>
+              </div>
+              <p class="fee-note"><em>Note: Membership provides full access to all approved training programs and opportunities but does not guarantee employment.</em></p>
+            </div>
+            
+            <div class="payment-method-card">
+              <h3>Mobile Money Payment Guide</h3>
+              <p>Since many of our beneficiaries are located in rural villages, you can conveniently pay your annual membership fee at any local cash-point or deposit directly using mobile money to one of the numbers below:</p>
+              
+              <div class="mobile-money-channels">
+                <div class="channel-row orange">
+                  <div class="channel-logo">🟠</div>
+                  <div class="channel-details">
+                    <h4>Orange Money</h4>
+                    <p class="phone-number">+267 71 234 567</p>
+                  </div>
+                </div>
+                <div class="channel-row mascom">
+                  <div class="channel-logo">🟡</div>
+                  <div class="channel-details">
+                    <h4>Mascom MyZaka</h4>
+                    <p class="phone-number">+267 72 345 678</p>
+                  </div>
+                </div>
+                <div class="channel-row bemobile">
+                  <div class="channel-logo">🟢</div>
+                  <div class="channel-details">
+                    <h4>BTC Smega (BeMobile)</h4>
+                    <p class="phone-number">+267 73 456 789</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="payment-confirmation-box">
+                <div class="confirm-icon">💬</div>
+                <div class="confirm-text">
+                  <h4>Step 2: Confirm Payment</h4>
+                  <p>After making your deposit, you must send an <strong>SMS</strong> or <strong>WhatsApp</strong> confirmation to <strong>+267 74 567 890</strong> stating your <strong>Full Name</strong> and your transaction reference code.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="policies-tab-content" id="policy-conduct">
+          <div class="conduct-layout">
+            <div class="conduct-header">
+              <h3>Code of Conduct for Members</h3>
+              <p>All members, beneficiaries, and participants of WOSEI Trust are expected to uphold our values and conduct themselves professionally. Review our code of conduct below:</p>
+            </div>
+            <ul class="conduct-list">
+              <li>
+                <span class="conduct-num">01</span>
+                <p><strong>Respect Fellow Participants:</strong> Treat all community members, beneficiaries, and peers with dignity, respect, and kindness.</p>
+              </li>
+              <li>
+                <span class="conduct-num">02</span>
+                <p><strong>Respect Trainers &amp; Coordinators:</strong> Cooperate fully with instructors, program organizers, and team facilitators.</p>
+              </li>
+              <li>
+                <span class="conduct-num">03</span>
+                <p><strong>Protect Trust Property:</strong> Care for and responsibly use computers, tools, materials, and facilities provided during training.</p>
+              </li>
+              <li>
+                <span class="conduct-num">04</span>
+                <p><strong>Punctuality &amp; Attendance:</strong> Arrive on time for training sessions and maintain regular attendance for program compliance.</p>
+              </li>
+              <li>
+                <span class="conduct-num">05</span>
+                <p><strong>Avoid Disruptive Behaviour:</strong> Ensure the learning environment remains positive, focused, and free from disturbance.</p>
+              </li>
+              <li>
+                <span class="conduct-num">06</span>
+                <p><strong>Zero Discrimination &amp; Harassment:</strong> We maintain a strictly inclusive space. Any discrimination or harassment is unacceptable.</p>
+              </li>
+              <li>
+                <span class="conduct-num">07</span>
+                <p><strong>Use Skills Responsibly:</strong> Apply the digital, business, and craft skills learned for positive socio-economic advancement.</p>
+              </li>
+              <li>
+                <span class="conduct-num">08</span>
+                <p><strong>Promote Trust Objectives:</strong> Support the mission of WOSEI Trust to uplift women and build self-reliance across Botswana.</p>
+              </li>
+              <li>
+                <span class="conduct-num">09</span>
+                <p><strong>Professionalism:</strong> Uphold professional standards, honest representation, and active participation in program evaluations.</p>
+              </li>
+            </ul>
+            <div class="conduct-alert-box">
+              <span class="alert-icon">⚠️</span>
+              <p><strong>Misconduct Policy:</strong> Any member found engaging in misconduct, theft, disruption, or violating these rules will face immediate suspension or termination of their participation.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="policies-tab-content" id="policy-operations">
+          <div class="operations-grid">
+            <div class="op-card">
+              <div class="op-icon">🏘️</div>
+              <h4>Community Engagement</h4>
+              <p>WOSEI Trust identifies wards, settlements, and villages with high unemployment or poverty rates to target intervention. Prior to launching projects, we collaborate closely with local leaders: <strong>Chiefs (Dikgosi)</strong>, <strong>Village Development Committees (VDCs)</strong>, Councillors, MPs, and government departments to foster local ownership and transparency.</p>
+            </div>
+            
+            <div class="op-card">
+              <div class="op-icon">🤝</div>
+              <h4>Branding Whizz Strategic Partnership</h4>
+              <p>To ensure sustainability and operational continuity, WOSEI Trust collaborates with <a href="https://www.brandingwhizz.co.bw" target="_blank" rel="noopener" class="branding-link"><strong>Branding Whizz</strong> ↗</a> for administration, coordination, and marketing of outreach projects. All revenues generated through Branding Whizz outreach efforts are managed transparently to support the expansion of our training initiatives.</p>
+            </div>
+
+            <div class="op-card">
+              <div class="op-icon">🏺</div>
+              <h4>Manufacturing &amp; Livelihood Projects</h4>
+              <p>We prioritize local resources and community participation to establish agricultural, textile, pottery, recycling, and food processing initiatives. The Trust retains a reasonable percentage of proceeds from large-scale projects to cover administration, equipment maintenance, and trainer remuneration.</p>
+            </div>
+
+            <div class="op-card">
+              <div class="op-icon">🌱</div>
+              <h4>Funding &amp; Sustainability</h4>
+              <p>We are a registered non-profit and do not operate for private gain. All funding received from donors, private sponsors, international agencies, and philanthropic organizations is used responsibly to advance community objectives.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CONTACT ===== -->
+  <section class="contact-section section" id="contact">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-label">Reach Out</span>
+        <h2 class="section-title">Contact <em>WOSEI Trust</em></h2>
+        <p class="section-sub">We'd love to hear from you — whether you want to donate, volunteer, or learn more about our work.</p>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-info reveal">
+          <div class="contact-item">
+            <span class="ci-icon">📍</span>
+            <div>
+              <h4>Location</h4>
+              <p>Gaborone, Botswana, Southern Africa</p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <span class="ci-icon">📧</span>
+            <div>
+              <h4>Email</h4>
+              <p>woseitrust@gmail.com</p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <span class="ci-icon">🌐</span>
+            <div>
+              <h4>About Us</h4>
+              <p>A non-profit organisation empowering Women in Africa through Arts, Crafts, Digital Skills &amp; Community Entrepreneurship.</p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <span class="ci-icon">📱</span>
+            <div>
+              <h4>Follow Us</h4>
+              <div class="social-links">
+                <a href="https://web.facebook.com/woseitrust" target="_blank" rel="noopener" class="social-link" aria-label="Facebook — WOSEI Trust">
+                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+                </a>
+                <a href="#" class="social-link" aria-label="Instagram">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+                </a>
+                <a href="#" class="social-link" aria-label="Twitter/X">
+                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <form class="contact-form reveal" id="contact-form" novalidate>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="cf-name">Full Name</label>
+              <input type="text" id="cf-name" name="name" placeholder="Your name" required />
+            </div>
+            <div class="form-group">
+              <label for="cf-email">Email Address</label>
+              <input type="email" id="cf-email" name="email" placeholder="your@email.com" required />
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="cf-subject">Subject</label>
+            <input type="text" id="cf-subject" name="subject" placeholder="How can we help?" />
+          </div>
+          <div class="form-group">
+            <label for="cf-message">Message</label>
+            <textarea id="cf-message" name="message" rows="5" placeholder="Tell us more..." required></textarea>
+          </div>
+          <button type="submit" class="btn-primary full-width" id="contact-submit-btn">Send Message</button>
+          <div class="form-success hidden" id="form-success">✅ Thank you! We'll be in touch soon.</div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="images/logo.jpg" alt="WOSEI Trust Logo" class="footer-logo" />
+          <p>Women Social Entrepreneurial Initiative — empowering women, transforming communities across Botswana.</p>
+          <button class="btn-donate-nav" id="open-donate-footer">❤ Donate</button>
+          <div style="display:flex;gap:12px;margin-top:18px;">
+            <a href="https://web.facebook.com/woseitrust" target="_blank" rel="noopener" style="width:38px;height:38px;background:#1877F2;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;transition:transform 0.3s;" aria-label="Facebook">
+              <svg viewBox="0 0 24 24" fill="currentColor" style="width:18px;height:18px;"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+            </a>
+          </div>
+        </div>
+        <div class="footer-links">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#programs">Our Programs</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#membership">Membership</a></li>
+            <li><a href="#impact">Our Impact</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-links">
+          <h4>Get Involved</h4>
+          <ul>
+            <li><a href="#" id="open-donate-footer2">Donate</a></li>
+            <li><a href="#contact">Volunteer</a></li>
+            <li><a href="#contact">Partner With Us</a></li>
+            <li><a href="https://www.brandingwhizz.co.bw" target="_blank" rel="noopener">Branding Whizz &#x2197;</a></li>
+            <li><a href="#contact">Newsletter</a></li>
+          </ul>
+        </div>
+        <div class="footer-newsletter">
+          <h4>Stay Updated</h4>
+          <p>Get our latest news and impact stories straight to your inbox.</p>
+          <form class="newsletter-form" id="newsletter-form">
+            <input type="email" id="nl-email" placeholder="Enter your email" required />
+            <button type="submit" id="nl-submit">Subscribe</button>
+          </form>
+          <div class="nl-success hidden" id="nl-success">✅ Subscribed! Thank you.</div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 WOSEI Trust &ndash; Women Social Entrepreneurial Initiative. All rights reserved.</p>
+        <p>Registered Non-Profit Organisation &middot; Gaborone, Botswana &nbsp;&middot;&nbsp; In partnership with <a href="https://www.brandingwhizz.co.bw" target="_blank" rel="noopener" class="footer-partner-link">Branding Whizz &#x2197;</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>
