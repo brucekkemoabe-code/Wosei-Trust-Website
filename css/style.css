@@ -91,7 +91,7 @@ a { text-decoration: none; color: inherit; }
 .btn-donate-mob { background: var(--primary); color: #fff; border: none; padding: 14px; border-radius: 50px; font-weight: 700; cursor: pointer; font-size: 1rem; margin-top: 16px; }
 
 /* ===== HERO ===== */
-.hero { min-height: 100vh; background: url('images/fb2.jpg') center/cover no-repeat; display: flex; align-items: center; position: relative; padding-top: 80px; }
+.hero { min-height: 100vh; background: url('../images/fb2.jpg') center/cover no-repeat; display: flex; align-items: center; position: relative; padding-top: 80px; }
 .hero-overlay { position: absolute; inset: 0; background: linear-gradient(to right, rgba(20,12,40,0.88) 0%, rgba(20,12,40,0.55) 45%, rgba(20,12,40,0.1) 85%, rgba(20,12,40,0) 100%); }
 .hero-content { position: relative; z-index: 1; max-width: 700px; padding: 0 24px 0 calc((100vw - 1160px)/2 + 24px); }
 @media (max-width:1200px) { .hero-content { padding: 0 24px; } }
@@ -163,7 +163,7 @@ a { text-decoration: none; color: inherit; }
 
 /* ===== IMPACT ===== */
 .impact-section { position: relative; background: linear-gradient(135deg, var(--dark2), #7b1fa2, var(--primary-dark)); padding: 100px 0; overflow: hidden; }
-.impact-overlay { position: absolute; inset: 0; background: url('images/fb3.jpg') center/cover; opacity: 0.08; }
+.impact-overlay { position: absolute; inset: 0; background: url('../images/fb3.jpg') center/cover; opacity: 0.08; }
 .impact-inner { position: relative; z-index: 1; display: grid; grid-template-columns: 1fr 1fr; gap: 70px; align-items: center; }
 .impact-quote blockquote { font-family: 'Lora', serif; font-size: clamp(1.1rem, 2.5vw, 1.45rem); color: rgba(255,255,255,0.92); line-height: 1.75; font-style: italic; position: relative; padding-left: 24px; }
 .impact-quote blockquote::before { content: '"'; position: absolute; left: 0; top: -10px; font-size: 4rem; color: var(--primary); line-height: 1; font-family: 'Lora', serif; }
